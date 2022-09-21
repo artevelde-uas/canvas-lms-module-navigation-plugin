@@ -1,4 +1,5 @@
 {
+    "module_navigation": "Modulenavigatie",
     "package": {
         "title": "Voegt modulenavigatie toe",
         "description": "Voegt modulenavigatie toe aan module-itempagina's"
