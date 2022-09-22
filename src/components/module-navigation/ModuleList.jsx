@@ -3,6 +3,8 @@ import { View } from '@instructure/ui-view';
 
 import { router, api } from '@artevelde-uas/canvas-lms-app';
 
+import ModuleListItem from './ModuleListItem';
+
 
 export default () => {
     const [modules, setModules] = useState();
@@ -25,19 +27,13 @@ export default () => {
 
     return (
         <View>
-            <ul>
-                {(modules && itemSequence) && modules.map(module => (
-                    <li
-                        key={module.id}
-                    >
-                        {module.id === itemSequence.current.module_id ? (
-                            <b>{module.name}</b>
-                        ) : (
-                            <a>{module.name}</a>
-                        )}
-                    </li>
-                ))}
-            </ul>
+            {(modules && itemSequence) && modules.map(module => (
+                <ModuleListItem
+                    key={module.id}
+                    module={module}
+                    currentItem={itemSequence.current}
+                />
+            ))}
         </View>
     );
 };
