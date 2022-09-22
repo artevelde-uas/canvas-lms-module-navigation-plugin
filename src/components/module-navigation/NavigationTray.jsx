@@ -5,6 +5,8 @@ import { Heading } from '@instructure/ui-heading';
 import { Tray } from '@instructure/ui-tray';
 import { View } from '@instructure/ui-view';
 
+import ModuleList from './ModuleList';
+
 import __ from '../../i18n';
 
 
@@ -41,6 +43,7 @@ export default ({ open, onCloseButtonClick }) => {
                             onClick={onCloseButtonClick} />
                     </Flex.Item>
                 </Flex>
+                <ModuleList />
             </View>
         </Tray>
     );
