@@ -13,9 +13,7 @@ export default () => {
     useEffect(() => {
         const params = router.getParams();
 
-        api.get(`/courses/${params.courseId}/modules`, {
-            per_page: 100
-        }).then(setModules);
+        api.get(`/courses/${params.courseId}/modules`).then(setModules);
 
         api.get(`/courses/${params.courseId}/module_item_sequence`, {
             asset_id: params.module_item_id,
