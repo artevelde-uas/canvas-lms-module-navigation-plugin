@@ -39,9 +39,13 @@ export default ({ module, currentItem }) => {
             >
                 {moduleItems && moduleItems.map(item => (
                     <List.Item key={item.id}>
-                        <Link href={item.html_url}>
-                            {item.title}
-                        </Link>
+                        <div style={{
+                            paddingLeft: `${item.indent}rem`
+                        }}>
+                            <Link href={item.html_url}>
+                                {item.title}
+                            </Link>
+                        </div>
                     </List.Item>
                 ))}
             </List>
