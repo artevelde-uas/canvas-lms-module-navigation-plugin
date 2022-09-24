@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { ToggleDetails } from '@instructure/ui-toggle-details';
+import { Link } from '@instructure/ui-link';
+import { List } from '@instructure/ui-list';
+
+import { router, api } from '@artevelde-uas/canvas-lms-app';
 
 
 export default ({ module, currentItem }) => {
     const [expanded, setExpanded] = useState(false);
+    const [moduleItems, setModuleItems] = useState(null);
 
     useEffect(() => {
         setExpanded(module.id === currentItem?.module_id);
     }, [currentItem]);
+
+    useEffect(() => {
+        if (!expanded || moduleItems !== null) return;
+
+        const params = router.getParams();
+
+        // Get module items
+        api.get(`/courses/${params.courseId}/modules/${module.id}/items`).then(setModuleItems);
+    }, [expanded]);
 
     function handleToggle(event, expanded) {
         setExpanded(expanded);
@@ -19,7 +33,18 @@ export default ({ module, currentItem }) => {
             expanded={expanded}
             onToggle={handleToggle}
         >
-            <span>TEST</span>
+            <List
+                isUnstyled
+                margin='none'
+            >
+                {moduleItems && moduleItems.map(item => (
+                    <List.Item key={item.id}>
+                        <Link href={item.html_url}>
+                            {item.title}
+                        </Link>
+                    </List.Item>
+                ))}
+            </List>
         </ToggleDetails>
     );
 };
