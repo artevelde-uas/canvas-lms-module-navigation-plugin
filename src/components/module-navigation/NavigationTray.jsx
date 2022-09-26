@@ -9,6 +9,8 @@ import ModuleList from './ModuleList';
 
 import __ from '../../i18n';
 
+import styles from '../../index.module.css';
+
 
 export default ({ open, onCloseButtonClick }) => {
     const content = document.getElementById('content');
@@ -22,6 +24,10 @@ export default ({ open, onCloseButtonClick }) => {
         content.style.width = '';
     }
 
+    function handleTrayRef(tray) {
+        tray?.ref.classList.add(styles.navigationTray);
+    }
+
     return (
         <Tray
             open={open}
@@ -29,6 +35,7 @@ export default ({ open, onCloseButtonClick }) => {
             label={__('module_navigation')}
             onEntered={handleEntered}
             onExited={handleExited}
+            ref={handleTrayRef}
         >
             <View as='div' padding='medium'>
                 <Flex>
