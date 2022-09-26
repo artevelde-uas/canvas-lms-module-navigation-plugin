@@ -10,13 +10,14 @@ import __ from '../i18n';
 
 export default () => {
     const [trayOpen, setTrayOpen] = useState(false);
+    const [button, setButton] = useState();
 
     useEffect(async () => {
         const footer = await dom.onElementReady('.module-sequence-footer-content');
 
         footer.insertAdjacentHTML('beforeend', `
             &nbsp;
-            <a class="btn">
+            <a class="btn" disabled>
                 <i class="icon-module"></i>
                 ${__('show_module_navigation')}
             </a>
@@ -25,7 +26,13 @@ export default () => {
         const button = footer.lastElementChild;
 
         button.onclick = () => { setTrayOpen(true); };
+
+        setButton(button);
     }, []);
+
+    useEffect(() => {
+        button?.toggleAttribute('disabled', trayOpen);
+    }, [trayOpen, button]);
 
     return (
         <EmotionThemeProvider theme={theme}>
