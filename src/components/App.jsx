@@ -6,10 +6,11 @@ import { dom, theme } from '@artevelde-uas/canvas-lms-app';
 import ModuleNavigationTray from './module-navigation/NavigationTray';
 
 import __ from '../i18n';
+import storage from '../storage';
 
 
 export default () => {
-    const [trayOpen, setTrayOpen] = useState(false);
+    const [trayOpen, setTrayOpen] = useState(storage.get('trayOpen', false));
     const [button, setButton] = useState();
 
     useEffect(async () => {
@@ -29,6 +30,10 @@ export default () => {
 
         setButton(button);
     }, []);
+
+    useEffect(() => {
+        storage.set('trayOpen', trayOpen);
+    }, [trayOpen]);
 
     useEffect(() => {
         button?.toggleAttribute('disabled', trayOpen);

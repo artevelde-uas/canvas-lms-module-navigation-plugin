@@ -16,6 +16,9 @@
     "src/",
     "locales/"
   ],
+  "dependencies": {
+    "store2": "^2.14.2"
+  },
   "peerDependencies": {
     "@artevelde-uas/canvas-lms-app": "^1.10.0",
     "react": "^17.0.2"
