@@ -1,4 +1,5 @@
 {
+    "show_module_navigation": "Show module navigation",
     "module_navigation": "Module navigation",
     "package": {
         "title": "Adds module navigation",
