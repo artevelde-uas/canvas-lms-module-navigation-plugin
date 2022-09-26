@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ToggleDetails } from '@instructure/ui-toggle-details';
 import { Link } from '@instructure/ui-link';
 import { List } from '@instructure/ui-list';
+import { Spinner } from '@instructure/ui-spinner';
 
 import { router, api } from '@artevelde-uas/canvas-lms-app';
 
@@ -33,22 +34,29 @@ export default ({ module, currentItem }) => {
             expanded={expanded}
             onToggle={handleToggle}
         >
-            <List
-                isUnstyled
-                margin='none'
-            >
-                {moduleItems && moduleItems.map(item => (
-                    <List.Item key={item.id}>
-                        <div style={{
-                            paddingLeft: `${item.indent}rem`
-                        }}>
-                            <Link href={item.html_url}>
-                                {item.title}
-                            </Link>
-                        </div>
-                    </List.Item>
-                ))}
-            </List>
+            {moduleItems ? (
+                <List
+                    isUnstyled
+                    margin='none'
+                >
+                    {moduleItems.map(item => (
+                        <List.Item key={item.id}>
+                            <div style={{
+                                paddingLeft: `${item.indent}rem`
+                            }}>
+                                <Link href={item.html_url}>
+                                    {item.title}
+                                </Link>
+                            </div>
+                        </List.Item>
+                    ))}
+                </List>
+            ) : (
+                <Spinner
+                    size="x-small"
+                    renderTitle="Loading"
+                />
+            )}
         </ToggleDetails>
     );
 };
