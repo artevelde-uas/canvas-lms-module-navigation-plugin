@@ -6,6 +6,8 @@ import { Spinner } from '@instructure/ui-spinner';
 
 import { router, api } from '@artevelde-uas/canvas-lms-app';
 
+import ModuleItem from './ModuleItem';
+
 
 export default ({ module, currentItem }) => {
     const [expanded, setExpanded] = useState(false);
@@ -41,13 +43,7 @@ export default ({ module, currentItem }) => {
                 >
                     {moduleItems.map(item => (
                         <List.Item key={item.id}>
-                            <div style={{
-                                paddingLeft: `${item.indent}rem`
-                            }}>
-                                <Link href={item.html_url}>
-                                    {item.title}
-                                </Link>
-                            </div>
+                            <ModuleItem item={item} />
                         </List.Item>
                     ))}
                 </List>
