@@ -24,7 +24,10 @@ export default () => {
     }, []);
 
     return (
-        <View>
+        <View
+            as='nav'
+            padding='medium none'
+        >
             {(modules && itemSequence) && modules.map(module => (
                 <ModuleListItem
                     key={module.id}

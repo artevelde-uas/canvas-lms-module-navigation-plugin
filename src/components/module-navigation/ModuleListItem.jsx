@@ -3,6 +3,7 @@ import { Heading } from '@instructure/ui-heading';
 import { List } from '@instructure/ui-list';
 import { Spinner } from '@instructure/ui-spinner';
 import { ToggleDetails } from '@instructure/ui-toggle-details';
+import { View } from '@instructure/ui-view';
 
 import { router, api } from '@artevelde-uas/canvas-lms-app';
 
@@ -31,6 +32,10 @@ export default ({ module, currentItem }) => {
     }
 
     return (
+        <View
+            as='div'
+            margin='small none'
+        >
         <ToggleDetails
             summary={(
                 <Heading level='h4'>{module.name}</Heading>
@@ -56,5 +61,6 @@ export default ({ module, currentItem }) => {
                 />
             )}
         </ToggleDetails>
+        </View>
     );
 };
