@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ToggleDetails } from '@instructure/ui-toggle-details';
+import { Heading } from '@instructure/ui-heading';
 import { List } from '@instructure/ui-list';
 import { Spinner } from '@instructure/ui-spinner';
+import { ToggleDetails } from '@instructure/ui-toggle-details';
 
 import { router, api } from '@artevelde-uas/canvas-lms-app';
 
@@ -31,7 +32,9 @@ export default ({ module, currentItem }) => {
 
     return (
         <ToggleDetails
-            summary={module.name}
+            summary={(
+                <Heading level='h4'>{module.name}</Heading>
+            )}
             expanded={expanded}
             onToggle={handleToggle}
         >
