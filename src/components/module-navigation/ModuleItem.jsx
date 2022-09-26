@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import { Heading } from '@instructure/ui-heading';
+import { IconPlaySolid } from '@instructure/ui-icons';
 import { Link } from '@instructure/ui-link';
 
 import ModuleItemIcon from './ModuleItemIcon';
 
 
-export default ({ item }) => (
+export default ({ item, isCurrentItem }) => (
     <div style={{
         paddingLeft: `${item.indent}rem`
     }}>
@@ -20,9 +21,17 @@ export default ({ item }) => (
             <Fragment>
                 <ModuleItemIcon type={item.type} />
                 &nbsp;
-                <Link href={item.html_url}>
-                    {item.title}
-                </Link>
+                {isCurrentItem ? (
+                    <Fragment>
+                        <IconPlaySolid color="brand" />
+                        &nbsp;
+                        <em><strong>{item.title}</strong></em>
+                    </Fragment>
+                ) : (
+                    <Link href={item.html_url}>
+                        {item.title}
+                    </Link>
+                )}
             </Fragment>
         )}
     </div>

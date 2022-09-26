@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Heading } from '@instructure/ui-heading';
+import { IconPlaySolid } from '@instructure/ui-icons';
 import { List } from '@instructure/ui-list';
 import { Spinner } from '@instructure/ui-spinner';
 import { ToggleDetails } from '@instructure/ui-toggle-details';
@@ -36,31 +37,44 @@ export default ({ module, currentItem }) => {
             as='div'
             margin='small none'
         >
-        <ToggleDetails
-            summary={(
-                <Heading level='h4'>{module.name}</Heading>
-            )}
-            expanded={expanded}
-            onToggle={handleToggle}
-        >
-            {moduleItems ? (
-                <List
-                    isUnstyled
-                    margin='none'
-                >
-                    {moduleItems.map(item => (
-                        <List.Item key={item.id}>
-                            <ModuleItem item={item} />
-                        </List.Item>
-                    ))}
-                </List>
-            ) : (
-                <Spinner
-                    size="x-small"
-                    renderTitle="Loading"
-                />
-            )}
-        </ToggleDetails>
+            <ToggleDetails
+                summary={(
+                    <Heading level='h4'>
+                        {(module.id === currentItem.module_id) ? (
+                            <Fragment>
+                                <IconPlaySolid color="brand" />
+                                &nbsp;
+                                <em>{module.name}</em>
+                            </Fragment>
+                        ) : (
+                            module.name
+                        )}
+                    </Heading>
+                )}
+                expanded={expanded}
+                onToggle={handleToggle}
+            >
+                {moduleItems ? (
+                    <List
+                        isUnstyled
+                        margin='none'
+                    >
+                        {moduleItems.map(item => (
+                            <List.Item key={item.id}>
+                                <ModuleItem
+                                    item={item}
+                                    isCurrentItem={(item.id === currentItem.id)}
+                                />
+                            </List.Item>
+                        ))}
+                    </List>
+                ) : (
+                    <Spinner
+                        size="x-small"
+                        renderTitle="Loading"
+                    />
+                )}
+            </ToggleDetails>
         </View>
     );
 };
