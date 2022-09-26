@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { ToggleDetails } from '@instructure/ui-toggle-details';
-import { Link } from '@instructure/ui-link';
 import { List } from '@instructure/ui-list';
 import { Spinner } from '@instructure/ui-spinner';
 
