@@ -25,7 +25,7 @@ export default ({ open, onCloseButtonClick }) => {
     }
 
     function handleTrayRef(tray) {
-        tray?.ref.classList.add(styles.navigationTray);
+        tray?.ref?.classList.add(styles.navigationTray);
     }
 
     return (
