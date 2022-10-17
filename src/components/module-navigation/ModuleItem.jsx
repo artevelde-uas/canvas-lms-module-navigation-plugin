@@ -26,7 +26,12 @@ export default ({ item, isCurrentItem, isLocked }) => (
                     <Fragment>
                         <IconPlaySolid color="brand" />
                         &nbsp;
-                        <em><strong>{item.title}</strong></em>
+                        <Text
+                            weight='bold'
+                            fontStyle='italic'
+                        >
+                            {item.title}
+                        </Text>
                     </Fragment>
                 ) : isLocked ? (
                     <Text color='secondary'>
