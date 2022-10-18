@@ -20,19 +20,21 @@ export default ({ item, isCurrentItem, isLocked }) => (
             </Heading>
         ) : (
             <Fragment>
+                    {isCurrentItem && (
+                        <Fragment>
+                            <IconPlaySolid color="brand" />
+                            &nbsp;
+                        </Fragment>
+                    )}
                 <ModuleItemIcon type={item.type} />
                 &nbsp;
-                {isCurrentItem ? (
-                    <Fragment>
-                        <IconPlaySolid color="brand" />
-                        &nbsp;
+                    {isCurrentItem ? (
                         <Text
                             weight='bold'
                             fontStyle='italic'
                         >
                             {item.title}
                         </Text>
-                    </Fragment>
                 ) : isLocked ? (
                     <Text color='secondary'>
                         {item.title}
