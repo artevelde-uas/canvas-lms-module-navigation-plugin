@@ -2,11 +2,12 @@ import React, { Fragment } from 'react';
 import { Heading } from '@instructure/ui-heading';
 import { IconPlaySolid } from '@instructure/ui-icons';
 import { Link } from '@instructure/ui-link';
+import { Text } from '@instructure/ui-text';
 
 import ModuleItemIcon from './ModuleItemIcon';
 
 
-export default ({ item, isCurrentItem }) => (
+export default ({ item, isCurrentItem, isLocked }) => (
     <div style={{
         paddingLeft: `${item.indent}rem`
     }}>
@@ -25,8 +26,17 @@ export default ({ item, isCurrentItem }) => (
                     <Fragment>
                         <IconPlaySolid color="brand" />
                         &nbsp;
-                        <em><strong>{item.title}</strong></em>
+                        <Text
+                            weight='bold'
+                            fontStyle='italic'
+                        >
+                            {item.title}
+                        </Text>
                     </Fragment>
+                ) : isLocked ? (
+                    <Text color='secondary'>
+                        {item.title}
+                    </Text>
                 ) : (
                     <Link href={item.html_url}>
                         {item.title}

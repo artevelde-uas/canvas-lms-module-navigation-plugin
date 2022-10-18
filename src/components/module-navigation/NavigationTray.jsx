@@ -14,14 +14,17 @@ import styles from '../../index.module.css';
 
 export default ({ open, onCloseButtonClick }) => {
     const content = document.getElementById('content');
+    const crumbs = document.querySelector('.ic-app-nav-toggle-and-crumbs');
 
     function handleEntered() {
         content.style.boxSizing = 'border-box';
         content.style.width = 'calc(100% - 320px)';
+        crumbs.style.width = 'calc(100% - 368px)';
     }
 
     function handleExited() {
         content.style.width = '';
+        crumbs.style.width = '';
     }
 
     function handleTrayRef(tray) {

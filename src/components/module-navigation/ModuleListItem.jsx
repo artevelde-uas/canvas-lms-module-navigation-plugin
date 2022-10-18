@@ -1,8 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Heading } from '@instructure/ui-heading';
-import { IconPlaySolid } from '@instructure/ui-icons';
+import { IconPlaySolid, IconLockLine } from '@instructure/ui-icons';
 import { List } from '@instructure/ui-list';
 import { Spinner } from '@instructure/ui-spinner';
+import { Text } from '@instructure/ui-text';
 import { ToggleDetails } from '@instructure/ui-toggle-details';
 import { View } from '@instructure/ui-view';
 
@@ -42,12 +43,22 @@ export default ({ module, currentItem }) => {
                     <Heading level='h4'>
                         {(module.id === currentItem.module_id) ? (
                             <Fragment>
-                                <IconPlaySolid color="brand" />
+                                <IconPlaySolid color='brand' />
                                 &nbsp;
                                 <em>{module.name}</em>
                             </Fragment>
                         ) : (
-                            module.name
+                            <Text
+                                color={(module.state === 'unlocked') ? 'primary' : 'secondary'}
+                            >
+                                {module.name}
+                            </Text>
+                        )}
+                        {(module.state === 'locked') && (
+                            <Fragment>
+                                &nbsp;
+                                <IconLockLine />
+                            </Fragment>
                         )}
                     </Heading>
                 )}
@@ -64,6 +75,7 @@ export default ({ module, currentItem }) => {
                                 <ModuleItem
                                     item={item}
                                     isCurrentItem={(item.id === currentItem.id)}
+                                    isLocked={module.state === 'locked'}
                                 />
                             </List.Item>
                         ))}
