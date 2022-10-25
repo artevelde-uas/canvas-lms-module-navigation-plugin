@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Flex } from '@instructure/ui-flex';
+import { Button } from '@instructure/ui-buttons';
+import { Link } from '@instructure/ui-link';
+import { IconArrowOpenStartSolid, IconArrowOpenEndSolid } from '@instructure/ui-icons';
 import { View } from '@instructure/ui-view';
 
 import { router, api } from '@artevelde-uas/canvas-lms-app';
@@ -28,13 +32,38 @@ export default () => {
             as='nav'
             padding='medium none'
         >
-            {(modules && itemSequence) && modules.map(module => (
-                <ModuleListItem
-                    key={module.id}
-                    module={module}
-                    currentItem={itemSequence.current}
-                />
-            ))}
+            <Flex
+                justifyItems='space-between'
+            >
+                <Flex.Item>
+                    <Link
+                        as={Button}
+                        href={itemSequence?.prev.html_url}
+                    >
+                        <IconArrowOpenStartSolid />
+                    </Link>
+                </Flex.Item>
+                <Flex.Item>
+                    <Link
+                        as={Button}
+                        href={itemSequence?.next.html_url}
+                    >
+                        <IconArrowOpenEndSolid />
+                    </Link>
+                </Flex.Item>
+            </Flex>
+            <View
+                as='div'
+                padding='small none none'
+            >
+                {(modules && itemSequence) && modules.map(module => (
+                    <ModuleListItem
+                        key={module.id}
+                        module={module}
+                        currentItem={itemSequence.current}
+                    />
+                ))}
+            </View>
         </View>
     );
 };
