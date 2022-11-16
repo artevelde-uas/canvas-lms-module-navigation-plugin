@@ -37,6 +37,7 @@ export default () => {
                 <Flex.Item>
                     <Button
                         href={itemSequence?.prev?.html_url}
+                        interaction={itemSequence?.prev ? 'enabled' : 'disabled'}
                     >
                         <IconArrowOpenStartSolid />
                     </Button>
@@ -44,6 +45,7 @@ export default () => {
                 <Flex.Item>
                     <Button
                         href={itemSequence?.next?.html_url}
+                        interaction={itemSequence?.next ? 'enabled' : 'disabled'}
                     >
                         <IconArrowOpenEndSolid />
                     </Button>
