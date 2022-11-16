@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Flex } from '@instructure/ui-flex';
 import { Button } from '@instructure/ui-buttons';
-import { Link } from '@instructure/ui-link';
 import { IconArrowOpenStartSolid, IconArrowOpenEndSolid } from '@instructure/ui-icons';
 import { View } from '@instructure/ui-view';
 
@@ -36,20 +35,18 @@ export default () => {
                 justifyItems='space-between'
             >
                 <Flex.Item>
-                    <Link
-                        as={Button}
+                    <Button
                         href={itemSequence?.prev?.html_url}
                     >
                         <IconArrowOpenStartSolid />
-                    </Link>
+                    </Button>
                 </Flex.Item>
                 <Flex.Item>
-                    <Link
-                        as={Button}
+                    <Button
                         href={itemSequence?.next?.html_url}
                     >
                         <IconArrowOpenEndSolid />
-                    </Link>
+                    </Button>
                 </Flex.Item>
             </Flex>
             <View
