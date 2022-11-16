@@ -38,7 +38,7 @@ export default () => {
                 <Flex.Item>
                     <Link
                         as={Button}
-                        href={itemSequence?.prev.html_url}
+                        href={itemSequence?.prev?.html_url}
                     >
                         <IconArrowOpenStartSolid />
                     </Link>
@@ -46,7 +46,7 @@ export default () => {
                 <Flex.Item>
                     <Link
                         as={Button}
-                        href={itemSequence?.next.html_url}
+                        href={itemSequence?.next?.html_url}
                     >
                         <IconArrowOpenEndSolid />
                     </Link>
