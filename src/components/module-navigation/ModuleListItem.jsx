@@ -41,7 +41,7 @@ export default ({ module, currentItem }) => {
             <ToggleDetails
                 summary={(
                     <Heading level='h4'>
-                        {(module.id === currentItem.module_id) ? (
+                        {(currentItem && (module.id === currentItem.module_id)) ? (
                             <Fragment>
                                 <IconPlaySolid color='brand' />
                                 &nbsp;
@@ -74,7 +74,7 @@ export default ({ module, currentItem }) => {
                             <List.Item key={item.id}>
                                 <ModuleItem
                                     item={item}
-                                    isCurrentItem={(item.id === currentItem.id)}
+                                    isCurrentItem={(currentItem && (item.id === currentItem.id))}
                                     isLocked={module.state === 'locked'}
                                 />
                             </List.Item>

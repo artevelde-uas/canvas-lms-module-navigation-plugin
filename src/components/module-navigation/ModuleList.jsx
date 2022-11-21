@@ -36,7 +36,7 @@ export default ({ modules, itemSequence }) => (
             as='div'
             padding='small none none'
         >
-            {(modules && itemSequence) && modules.map(module => (
+            {modules && modules.map(module => (
                 <ModuleListItem
                     key={module.id}
                     module={module}
