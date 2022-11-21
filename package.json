@@ -1,6 +1,6 @@
 {
   "name": "@artevelde-uas/canvas-lms-module-navigation-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Adds module navigation to module item pages",
   "keywords": [
     "Canvas LMS"
