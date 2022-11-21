@@ -3,10 +3,10 @@ import { EmotionThemeProvider } from '@instructure/emotion';
 
 import { dom, theme } from '@artevelde-uas/canvas-lms-app';
 
-import ModuleNavigationTray from './module-navigation/NavigationTray';
+import Tray from './Tray';
 
-import __ from '../i18n';
-import storage from '../storage';
+import __ from '../../i18n';
+import storage from '../../storage';
 
 
 export default () => {
@@ -26,7 +26,9 @@ export default () => {
 
         const button = footer.lastElementChild;
 
-        button.onclick = () => { setTrayOpen(true); };
+        button.onclick = () => {
+            setTrayOpen(true);
+        };
 
         setButton(button);
     }, []);
@@ -41,7 +43,7 @@ export default () => {
 
     return (
         <EmotionThemeProvider theme={theme}>
-            <ModuleNavigationTray
+            <Tray
                 open={trayOpen}
                 onCloseButtonClick={() => { setTrayOpen(false); }}
             />

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { dom, router } from '@artevelde-uas/canvas-lms-app';
 
-import App from './components/App';
+import ModuleItemNavigation from './components/module-item-navigation';
 
 import __ from './i18n';
 
@@ -15,7 +15,7 @@ export default function () {
             const container = document.createDocumentFragment();
 
             // Render the component
-            ReactDOM.render(React.createElement(App), container);
+            ReactDOM.render(React.createElement(ModuleItemNavigation), container);
         });
     });
 
