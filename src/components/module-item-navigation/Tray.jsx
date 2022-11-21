@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CloseButton } from '@instructure/ui-buttons';
 import { Flex } from '@instructure/ui-flex';
 import { Heading } from '@instructure/ui-heading';
 import { Tray } from '@instructure/ui-tray';
 import { View } from '@instructure/ui-view';
+
+import { router, api } from '@artevelde-uas/canvas-lms-app';
 
 import ModuleList from './ModuleList';
 
@@ -13,8 +15,26 @@ import styles from '../../index.module.css';
 
 
 export default ({ open, onCloseButtonClick }) => {
+    const [modules, setModules] = useState();
+    const [itemSequence, setItemSequence] = useState();
+
     const content = document.getElementById('content');
     const crumbs = document.querySelector('.ic-app-nav-toggle-and-crumbs');
+
+    useEffect(() => {
+        const params = router.getParams();
+
+        // Get all the course modules
+        api.get(`/courses/${params.courseId}/modules`).then(setModules);
+
+        // Get the current module item
+        api.get(`/courses/${params.courseId}/module_item_sequence`, {
+            asset_id: params.module_item_id,
+            asset_type: 'ModuleItem'
+        }).then(itemSequence => {
+            setItemSequence(itemSequence.items[0]);
+        });
+    }, []);
 
     function handleEntered() {
         content.style.boxSizing = 'border-box';
@@ -53,7 +73,10 @@ export default ({ open, onCloseButtonClick }) => {
                             onClick={onCloseButtonClick} />
                     </Flex.Item>
                 </Flex>
-                <ModuleList />
+                <ModuleList
+                    modules={modules}
+                    itemSequence={itemSequence}
+                />
             </View>
         </Tray>
     );
