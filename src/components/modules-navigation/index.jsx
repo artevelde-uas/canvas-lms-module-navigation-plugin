@@ -5,7 +5,7 @@ import { dom, theme } from '@artevelde-uas/canvas-lms-app';
 
 import Tray from './Tray';
 
-import __ from '../../i18n';
+import t from '../../i18n';
 import storage from '../../storage';
 
 
@@ -30,7 +30,7 @@ export default () => {
             leftButtonBar.insertAdjacentHTML('beforeend', `
                 <a class="btn" disabled>
                     <i class="icon-module"></i>
-                    ${__('show_module_navigation')}
+                    ${t('show_module_navigation')}
                 </a>
             `);
 

@@ -9,7 +9,7 @@ import { router, api } from '@artevelde-uas/canvas-lms-app';
 
 import ModuleList from './ModuleList';
 
-import __ from '../../i18n';
+import t from '../../i18n';
 
 import styles from '../../index.module.css';
 
@@ -46,7 +46,7 @@ export default ({ open, onCloseButtonClick }) => {
         <Tray
             open={open}
             placement='end'
-            label={__('module_navigation')}
+            label={t('module_navigation')}
             onEntered={handleEntered}
             onExited={handleExited}
             ref={handleTrayRef}
@@ -54,7 +54,7 @@ export default ({ open, onCloseButtonClick }) => {
             <View as='div' padding='medium'>
                 <Flex>
                     <Flex.Item shouldGrow shouldShrink>
-                        <Heading>{__('module_navigation')}</Heading>
+                        <Heading>{t('module_navigation')}</Heading>
                     </Flex.Item>
                     <Flex.Item>
                         <CloseButton
